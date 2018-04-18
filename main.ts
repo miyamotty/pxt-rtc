@@ -38,7 +38,41 @@ namespace rtc {
         let timeBuf = getTimeData();
         let i = timeBuf.length-1;
         let year = bcd2bin(timeBuf.getNumber(NumberFormat.UInt8LE, i));
-        return 18;
+        return year;
     }
+    //% blockId=get_month block="月"
+    export function getMonth(): number {
+        let timeBuf = getTimeData();
+        let i = timeBuf.length - 2;
+        let months = bcd2bin(timeBuf.getNumber(NumberFormat.UInt8LE, i));
+        return months;
+    }
+    //% blockId=get_day block="日"
+    export function getDay(): number {
+        let timeBuf = getTimeData();
+        let i = timeBuf.length - 4;
+        let days = bcd2bin(timeBuf.getNumber(NumberFormat.UInt8LE, i));
+        return days;
+    }
+    //% blockId=get_hour block="時"
+    export function getHours(): number {
+        let timeBuf = getTimeData();
+        let i = timeBuf.length - 5;
+        let hours = bcd2bin(timeBuf.getNumber(NumberFormat.UInt8LE, i));
+        return hours;
+    }
+    //% blockId=get_min block="分"
+    export function getMin(): number {
+        let timeBuf = getTimeData();
+        let minutes = bcd2bin(timeBuf.getNumber(NumberFormat.UInt8LE, 4));
+        return minutes;
+    }
+    //% blockId=get_min block="秒"
+    export function geSec(): number {
+        let timeBuf = getTimeData();
+        let seconds = bcd2bin(timeBuf.getNumber(NumberFormat.UInt8LE, 3));
+        return seconds;
+    }
+
     
 }
