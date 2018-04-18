@@ -1,5 +1,6 @@
-//% weight=70 icon="\uf017" color=#EC7505 block="時間"
-namespace katakana {
+//% weight=70 icon="\uf017"
+//% color=#EC7505 block="時間"
+namespace rtc {
     const rtcAddress = 104;
     function bcd2bin(val: number) {
         return val - 6 * (val >> 4);
@@ -7,8 +8,8 @@ namespace katakana {
     function bin2bcd(val: number) {
         return val + 6 * (val / 10);
     }
-    //% blockId=show_strings block="時間を設定 20%years 年| %months|月 %days|日 %hours|時 %minutes|分 %seconds|秒"
-    export function putStr(years: number, months: number, days: number, 
+    //% blockId=show_strings block="時間を設定 年%years | 月%months| 日%days| 時%hours| 分%minutes|分 %seconds|秒"
+    export function setTimeDate(years: number, months: number, days: number, 
         hours: number, minutes: number, seconds: number): void{
         pins.i2cWriteNumber(rtcAddress, 0, NumberFormat.UInt8LE, false);
         let i2cBuffer = pins.createBuffer(NumberFormat.UInt8LE * 11);
