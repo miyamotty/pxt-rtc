@@ -67,8 +67,8 @@ namespace rtc {
         let minutes = bcd2bin(timeBuf.getNumber(NumberFormat.UInt8LE, 4));
         return minutes;
     }
-    //% blockId=get_min block="秒"
-    export function geSec(): number {
+    //% blockId=get_sec block="秒"
+    export function getSec(): number {
         let timeBuf = getTimeData();
         let seconds = bcd2bin(timeBuf.getNumber(NumberFormat.UInt8LE, 3));
         return seconds;
