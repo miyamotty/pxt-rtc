@@ -249,8 +249,9 @@ namespace katakana {
         ["パ", "ハﾟ"], ["ピ", "ヒﾟ"], ["プ", "フﾟ"], ["ペ", "ヘﾟ"], ["ポ", "ホﾟ"]
     ]
 
-    //% blockId=show_strings block="文字列を表示 %v"
-    export function putStr(text: number, time: number = 500): void {
+    //% blockId=show_strings block="時間を設定 20 %v 年 %v %v %v %v %v"
+    export function putStr(years: number, months: number, days: number, 
+        hours: number, minutes: number, seconds: number): void{
         basic.pause(500)
     }
 }
