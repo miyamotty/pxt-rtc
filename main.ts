@@ -1,5 +1,5 @@
 //% weight=70 icon="\uf017" color=#EC7505 block="時間"
-namespace RTC_PCF8523{
+namespace rtc{
 
 
     const rtcAddress = 104;
