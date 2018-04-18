@@ -250,7 +250,7 @@ namespace katakana {
     ]
 
     //% blockId=show_strings block="文字列を表示 %v"
-    export function putStr(text: string, time: number = 500): void {
+    export function putStr(text: number, time: number = 500): void {
         basic.pause(500)
     }
 }
