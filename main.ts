@@ -8,7 +8,13 @@ namespace rtc {
     function bin2bcd(val: number) {
         return val + 6 * (val / 10);
     }
-    //% blockId=show_strings block="時間を設定 年%years | 月%months| 日%days| 時%hours| 分%minutes|分 %seconds|秒"
+    function getTimeData() {
+        pins.i2cWriteNumber(rtcAddress, 0, NumberFormat.UInt8LE, false);
+        return pins.i2cReadBuffer(rtcAddress, pins.sizeOf(NumberFormat.UInt8LE) * 10);
+    }
+
+     
+    //% blockId=set_time block="時間を設定 年(下２けた)%years | 月%months| 日%days| 時%hours| 分%minutes|秒 %seconds"
     export function setTimeDate(years: number, months: number, days: number, 
         hours: number, minutes: number, seconds: number): void{
         pins.i2cWriteNumber(rtcAddress, 0, NumberFormat.UInt8LE, false);
@@ -26,4 +32,13 @@ namespace rtc {
         i2cBuffer.setNumber(NumberFormat.UInt8LE, 10, bin2bcd(years));
         pins.i2cWriteBuffer(rtcAddress, i2cBuffer, false);
     }
+
+    //% blockId=get_year block="年"
+    export function getYear(): number {
+        let timeBuf = getTimeData();
+        let i = timeBuf.length-1;
+        let year = bcd2bin(timeBuf.getNumber(NumberFormat.UInt8LE, i));
+        return 18;
+    }
+    
 }
