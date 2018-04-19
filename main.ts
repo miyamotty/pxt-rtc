@@ -36,33 +36,29 @@ namespace rtc {
     //% blockId=get_year block="年"
     export function getYear(): number {
         let timeBuf = getTimeData();
-        let i = timeBuf.length-1;
-        let year = bcd2bin(timeBuf.getNumber(NumberFormat.UInt8LE, i));
+        let year = bcd2bin(timeBuf.getNumber(NumberFormat.UInt8LE, 9));
         return year;
     }
     //% blockId=get_month block="月"
     export function getMonth(): number {
         let timeBuf = getTimeData();
-        let i = timeBuf.length - 2;
-        let months = bcd2bin(timeBuf.getNumber(NumberFormat.UInt8LE, i));
+        let months = bcd2bin(timeBuf.getNumber(NumberFormat.UInt8LE, 8));
         return months;
     }
     //% blockId=get_day block="日"
     export function getDay(): number {
         let timeBuf = getTimeData();
-        let i = timeBuf.length - 4;
-        let days = bcd2bin(timeBuf.getNumber(NumberFormat.UInt8LE, i));
+        let days = bcd2bin(timeBuf.getNumber(NumberFormat.UInt8LE, 6));
         return days;
     }
     //% blockId=get_hour block="時"
     export function getHours(): number {
         let timeBuf = getTimeData();
-        let i = timeBuf.length - 5;
-        let hours = bcd2bin(timeBuf.getNumber(NumberFormat.UInt8LE, i));
+        let hours = bcd2bin(timeBuf.getNumber(NumberFormat.UInt8LE, 5));
         return hours;
     }
-    //% blockId=get_min block="分"
-    export function getMin(): number {
+    //% blockId=get_minute block="分"
+    export function getMinute(): number {
         let timeBuf = getTimeData();
         let minutes = bcd2bin(timeBuf.getNumber(NumberFormat.UInt8LE, 4));
         return minutes;
@@ -70,7 +66,7 @@ namespace rtc {
     //% blockId=get_sec block="秒"
     export function getSec(): number {
         let timeBuf = getTimeData();
-        let seconds = bcd2bin(timeBuf.getNumber(NumberFormat.UInt8LE, 3));
+        let seconds = bcd2bin(timeBuf.getNumber(NumberFormat.UInt8LE, 3)-128);
         return seconds;
     }
 
